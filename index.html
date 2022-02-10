@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <meta charset="utf-8" />
     <title>Les petits plats</title>
   </head>
   <body>
     <header>
-        <div class="banner">
-            <img src="asset/icons/LPPIcon.png">
-            <h1>Les petits plats</h1>
-        </div>
-        <div id="searchWrapper">
-            <input
-                type="text"
-                name="searchBar"
-                id="searchBar"
-                placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
-            />
-        </div>
-    <div class="selectListOption"></div>
-    <div id="listWrapper">    
-      
-        <ul id="ingredientList">Ingredients</ul>
-        <ul id="applianceList">Appareils</ul>
-        <ul id="ustensilList">Ustensiles</ul>
-    </div>
+      <div class="banner">
+        <img src="asset/icons/LPPIcon.png" />
+        <h1>Les petits plats</h1>
+      </div>
+      <div id="searchWrapper">
+        <input
+          type="text"
+          name="searchBar"
+          id="searchBar"
+          placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+        />
+      </div>
+      <div class="selectListOption"></div>
+      <div id="listWrapper">
+        <ul id="ingredientList">
+          Ingredients
+        </ul>
+        <ul id="applianceList">
+          Appareils
+        </ul>
+        <ul id="ustensilList">
+          Ustensiles
+        </ul>
+      </div>
     </header>
     <main>
-        <div class="menuArticles"></div>
+      <div class="menuArticles"></div>
     </main>
     <script src="data/recipes.js"></script>
     <script src="scripts/utils/search.js"></script>

@@ -22,31 +22,15 @@ searchBar.addEventListener("keyup", (e) => {
       }
     }
     for (i = 0; i < recipeList.length; i++) {
-      if (recipeList[i] == recipeList[i-1]) {
+      if (recipeList[i] == recipeList[i - 1]) {
         recipeList.splice(i, 1);
       }
-      if (recipeList[i] == recipeList[i+1]) {
+      if (recipeList[i] == recipeList[i + 1]) {
         recipeList.splice(i, 1);
       }
-    }
-    if (recipeList.length > 0) {
-      displayMenu(recipeList);
-      allIngList(recipeList);
-allApplList(recipeList);
-allUstList(recipeList);
-
-    }
-    else{
-      displayMenu(recipes);
-      allIngList(recipes);
-allApplList(recipes);
-allUstList(recipes);
-
-    }
+    }    
   } else {
-    displayMenu(recipes);
-    allIngList(recipes);
-allApplList(recipes);
-allUstList(recipes);
+    
   }
+  filtering()
 });
