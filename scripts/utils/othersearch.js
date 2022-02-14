@@ -2,53 +2,30 @@ var allIngredientsList = "";
 var allAppliancesList = "";
 var allUstensilsList = "";
 
+function allELListener(){
+  ELListShown("#ingredientList","#ingredientList li")
+  ELListShown("#applianceList","#applianceList li")
+  ELListShown("#ustensilList","#ustensilList li")
+}
+allELListener()
 
-
-document
-  .querySelector("#ingredientList")
-  .addEventListener("click", function () {
-    const listIng = document.querySelectorAll("#ingredientList li");
-
+function ELListShown(parameter1,parameter2){
+  document.querySelector(parameter1).addEventListener("click", function () {
+    const listIng = document.querySelectorAll(parameter2);
     for (i = 0; i < listIng.length; i++) {
       if (listIng[i].style.display != "") {
         listIng[i].style.display = "";
-        document.querySelector("#ingredientList").setAttribute("class", "");
-      } else {
+        document.querySelector(parameter1).setAttribute("class", "");
+      } 
+      else {
         listIng[i].style.display = "block";
         document
-          .querySelector("#ingredientList")
+          .querySelector(parameter1)
           .setAttribute("class", "active");
       }
-    }
-  });
-
-document.querySelector("#applianceList").addEventListener("click", function () {
-  const listIng = document.querySelectorAll("#applianceList li");
-
-  for (i = 0; i < listIng.length; i++) {
-    if (listIng[i].style.display != "") {
-      listIng[i].style.display = "";
-      document.querySelector("#applianceList").setAttribute("class", "");
-    } else {
-      listIng[i].style.display = "block";
-      document.querySelector("#applianceList").setAttribute("class", "active");
-    }
-  }
-});
-
-document.querySelector("#ustensilList").addEventListener("click", function () {
-  const listIng = document.querySelectorAll("#ustensilList li");
-
-  for (i = 0; i < listIng.length; i++) {
-    if (listIng[i].style.display != "") {
-      listIng[i].style.display = "";
-      document.querySelector("#ustensilList").setAttribute("class", "");
-    } else {
-      listIng[i].style.display = "block";
-      document.querySelector("#ustensilList").setAttribute("class", "active");
-    }
-  }
-});
+}
+})
+}
 
 let allIngredientsListTemp = [];
 function allIngList(recipeBuild) {
@@ -152,69 +129,45 @@ function innerUstensilsFunction() {
     "Ustensiles" + allUstensilsList;
 }
 
-document
-  .querySelector("#ingredientList")
-  .addEventListener("click", function (event) {
-    console.log(event.target.innerText.match(/(\n)/g));
+document.querySelector("#ingredientList").addEventListener("click", function (event) {
     if (
       event.target.innerText.match(/(\n)/g) == null &&
       event.target.innerText != "Ingredients"
     ) {
-      console.log("valid");
       const selectOptMark = document.createElement("div");
       selectOptMark.textContent = event.target.innerText;
       document.querySelector(".selectListOption").appendChild(selectOptMark);
-      console.log(allIngredientsListTemp.indexOf(event.target.innerText));
-      let index = allIngredientsListTemp.indexOf(event.target.innerText);
-      selectOptMark.setAttribute("name", index);
       selectOptMark.setAttribute("class", "IngOpt");
-      allIngredientsListTemp.splice(index, 1);
-      console.log(allIngredientsListTemp);
       innerIngredientsFunction();
     }
-  });
-document
-  .querySelector("#applianceList")
-  .addEventListener("click", function (event) {
-    console.log(event.target.innerText.match(/(\n)/g));
+  }
+);
+document.querySelector("#applianceList").addEventListener("click", function (event) {
     if (
       event.target.innerText.match(/(\n)/g) == null &&
       event.target.innerText != "Appareils"
     ) {
-      console.log("valid");
       const selectOptMark = document.createElement("div");
       selectOptMark.textContent = event.target.innerText;
       document.querySelector(".selectListOption").appendChild(selectOptMark);
-      console.log(allApplianceListTemp.indexOf(event.target.innerText));
-      let index = allApplianceListTemp.indexOf(event.target.innerText);
-      selectOptMark.setAttribute("name", index);
       selectOptMark.setAttribute("class", "ApplOpt");
-      allApplianceListTemp.splice(index, 1);
-      console.log(allApplianceListTemp);
       innerApplianceFunction();
     }
-  });
-document
-  .querySelector("#ustensilList")
-  .addEventListener("click", function (event) {
-    console.log(event.target.innerText.match(/(\n)/g));
+  }
+);
+document.querySelector("#ustensilList").addEventListener("click", function (event) {
     if (
       event.target.innerText.match(/(\n)/g) == null &&
       event.target.innerText != "Ustensiles"
     ) {
-      console.log("valid");
       const selectOptMark = document.createElement("div");
       selectOptMark.textContent = event.target.innerText;
       document.querySelector(".selectListOption").appendChild(selectOptMark);
-      console.log(allUstensilsListTemp.indexOf(event.target.innerText));
-      let index = allUstensilsListTemp.indexOf(event.target.innerText);
-      selectOptMark.setAttribute("name", index);
       selectOptMark.setAttribute("class", "UstOpt");
-      allUstensilsListTemp.splice(index, 1);
-      console.log(allUstensilsListTemp);
       innerUstensilsFunction();
     }
-  });
+  }
+);
 
 allIngList(recipes);
 allApplList(recipes);

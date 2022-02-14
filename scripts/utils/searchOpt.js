@@ -87,7 +87,7 @@ function filtering() {
     }
   }
   itemList();
-  goodListing()
+  globalGoodListing()
 }
 
 function itemList() {
@@ -127,20 +127,18 @@ function itemList() {
   }
 }
 
-document
-  .querySelector("#ingredientList")
-  .addEventListener("click", function (event) {
-    if (
-      event.target.innerText.match(/(\n)/g) == null &&
-      event.target.innerText != "Ingredients"
-    ) {
-      filtering();
-      console.log(document.querySelectorAll(".IngOpt"))
-      document.querySelectorAll(".IngOpt").forEach(element => element.addEventListener("click", removeOpt))
-    }
-  });
+document.querySelector("#ingredientList").addEventListener("click", function (event) {
+  if (
+    event.target.innerText.match(/(\n)/g) == null &&
+    event.target.innerText != "Ingredients"
+  ) {
+    filtering();
+    document.querySelectorAll(".IngOpt").forEach(element => element.addEventListener("click", removeOpt))
+  }
+}
+);
+
 function SearchIngredientOptions(recipeBuild) {
-  console.log(ingOpt[0].innerText);
   for (i = 0; i < recipeBuild.length; i++) {
     for (i2 = 0; i2 < recipeBuild[i].ingredients.length; i2++) {
       for (i3 = 0; i3 < ingOpt.length; i3++) {
@@ -151,7 +149,6 @@ function SearchIngredientOptions(recipeBuild) {
             .replace(/[\u0300-\u036f]/g, "") == ingOpt[i3].innerText
         ) {
           recipeIngredientsList.push(recipeBuild[i]);
-          console.log("YES");
         }
       }
     }
@@ -172,9 +169,7 @@ function SearchIngredientOptions(recipeBuild) {
         }
       }
       if (ingOpt.length == isIn) {
-        console.log("Both In");
       } else {
-        console.log("Not Both In");
         recipeIngredientsList.splice(i, 1);
         i = i - 1;
       }
@@ -189,19 +184,18 @@ function SearchIngredientOptions(recipeBuild) {
       i = i - 1;
     }
   }
-  console.log(recipeIngredientsList);
 }
 
-document
-  .querySelector("#applianceList")
-  .addEventListener("click", function (event) {
-    if (
-      event.target.innerText.match(/(\n)/g) == null &&
-      event.target.innerText != "Appareils"
-    ) {
-      filtering();
-    }
-  });
+document.querySelector("#applianceList").addEventListener("click", function (event) {
+  if (
+    event.target.innerText.match(/(\n)/g) == null &&
+    event.target.innerText != "Appareils"
+  ) {
+    filtering();
+    document.querySelectorAll(".ApplOpt").forEach(element => element.addEventListener("click", removeOpt))
+  }
+}
+);
 function SearchApplianceOptions(recipeBuild) {
   for (i = 0; i < recipeBuild.length; i++) {
     for (i2 = 0; i2 < applOpt.length; i2++) {
@@ -223,20 +217,18 @@ function SearchApplianceOptions(recipeBuild) {
       recipeApplianceList.splice(i, 1);
     }
   }
-
-  console.log(recipeApplianceList);
 }
 
-document
-  .querySelector("#ustensilList")
-  .addEventListener("click", function (event) {
-    if (
-      event.target.innerText.match(/(\n)/g) == null &&
-      event.target.innerText != "Ustensiles"
-    ) {
-      filtering();
-    }
-  });
+document.querySelector("#ustensilList").addEventListener("click", function (event) {
+  if (
+    event.target.innerText.match(/(\n)/g) == null &&
+    event.target.innerText != "Ustensiles"
+  ) {
+    filtering();
+    document.querySelectorAll(".UstOpt").forEach(element => element.addEventListener("click", removeOpt))
+  }
+}
+);
 function SearchUstensilsOptions(recipeBuild) {
   for (i = 0; i < recipeBuild.length; i++) {
     for (i2 = 0; i2 < recipeBuild[i].ustensils.length; i2++) {
@@ -268,9 +260,7 @@ function SearchUstensilsOptions(recipeBuild) {
         }
       }
       if (ustOpt.length == ustIn) {
-        console.log("Ust in");
       } else {
-        console.log("absolute fail");
         recipeUstensilsList.splice(i, 1);
         i = i - 1;
       }
@@ -284,42 +274,27 @@ function SearchUstensilsOptions(recipeBuild) {
       i = i - 1;
     }
   }
-  console.log(recipeUstensilsList);
-
 }
 
 function removeOpt(event) {
-  console.log(event.target.innerHTML);
   event.target.outerHTML = "";
   filtering()
 }
 
-function goodListing() {
-let ingredientList = []
-  for (i2 = 0; i2 < document.querySelector("#ingredientList").children.length; i2++) {
-    ingredientList.push(document.querySelector("#ingredientList").children[i2].innerText)
+function globalGoodListing() {
+  goodListing("#ingredientList", ingOpt)
+  goodListing("#applianceList", applOpt)
+  goodListing("#ustensilList", ustOpt)
+}
+
+function goodListing(querySelector1, Opt) {
+  let optionList = [];
+  for (i2 = 0; i2 < document.querySelector(querySelector1).children.length; i2++) {
+    optionList.push(document.querySelector(querySelector1).children[i2].innerText)
   }
-  for (i = 0; i < ingOpt.length; i++) {
-    index = ingredientList.indexOf(ingOpt[i].innerText);
-    index = index - i
-    document.querySelector("#ingredientList").children[index].outerHTML = ""
-  }
-let ApplianceList = []
-  for (i2 = 0; i2 < document.querySelector("#applianceList").children.length; i2++) {
-    ApplianceList.push(document.querySelector("#applianceList").children[i2].innerText)
-  }
-  for (i = 0; i < applOpt.length; i++) {
-    index = ApplianceList.indexOf(ingOpt[i].innerText);
-    index = index - i
-    document.querySelector("#applianceList").children[index].outerHTML = ""
-  }
-let UstensilsList = []
-  for (i2 = 0; i2 < document.querySelector("#ustensilList").children.length; i2++) {
-    UstensilsList.push(document.querySelector("#ustensilList").children[i2].innerText)
-  }
-  for (i = 0; i < ustOpt.length; i++) {
-    index = ingredUstensilsListientList.indexOf(ingOpt[i].innerText);
-    index = index - i
-    document.querySelector("#ustensilList").children[index].outerHTML = ""
+  for (i = 0; i < Opt.length; i++) {
+    index = optionList.indexOf(Opt[i].innerText);
+    index = index - i;
+    document.querySelector(querySelector1).children[index].outerHTML = "";
   }
 }
