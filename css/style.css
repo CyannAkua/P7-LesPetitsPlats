@@ -208,12 +208,21 @@ font-family:"Lato", "DM Sans", sans-serif
 .selectListOption{
     display: flex;
     flex-flow: wrap row;
+    margin: 20px 95px 0px;
 }
 .selectListOption div{
-    background: #3282F7;
     margin: 5px;
     padding: 5px;
     width: fit-content;
     color: white;
     border-radius: 5px;
+}
+.selectListOption .IngOpt{
+    background: #3282F7;
+}
+.selectListOption .ApplOpt{
+    background: #68D9A4;
+}
+.selectListOption .UstOpt{
+    background:#ED6454;
 }

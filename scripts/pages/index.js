@@ -8,4 +8,3 @@ function displayMenu(recipeBuild) {
     menuArticle.appendChild(menuCardDOM);
   });
 }
-displayMenu(recipes);

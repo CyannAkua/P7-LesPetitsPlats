@@ -167,8 +167,11 @@ document.querySelector("#ustensilList").addEventListener("click", function (even
       innerUstensilsFunction();
     }
   }
-);
-
-allIngList(recipes);
-allApplList(recipes);
-allUstList(recipes);
+)
+function globalList(recipeBuild){
+  allIngList(recipeBuild)
+  allApplList(recipeBuild)
+  allUstList(recipeBuild)
+  displayMenu(recipeBuild)
+}
+globalList(recipes)

@@ -92,37 +92,31 @@ function filtering() {
 
 function itemList() {
   if (recipeUstensilsList.length > 0) {
-    allIngList(recipeUstensilsList);
-    allApplList(recipeUstensilsList);
-    allUstList(recipeUstensilsList);
-    displayMenu(recipeUstensilsList);
+    globalList(recipeUstensilsList);
     return;
   }
   if (recipeApplianceList.length > 0) {
-    allIngList(recipeApplianceList);
-    allApplList(recipeApplianceList);
-    allUstList(recipeApplianceList);
-    displayMenu(recipeApplianceList);
+    globalList(recipeApplianceList);
     return;
   }
   if (recipeIngredientsList.length > 0) {
-    allIngList(recipeIngredientsList);
-    allApplList(recipeIngredientsList);
-    allUstList(recipeIngredientsList);
-    displayMenu(recipeIngredientsList);
+    globalList(recipeIngredientsList);
     return;
   }
   if (searchBar.value.length > 2) {
-    allIngList(recipeList);
-    allApplList(recipeList);
-    allUstList(recipeList);
-    displayMenu(recipeList);
-    return;
+    globalList(recipeList);
+    if (recipeList.length > 0) {
+      return;
+    }
+    else {
+      const noRecipeFound = document.createElement("div")
+      noRecipeFound.setAttribute("class", "noRecipeFound")
+      noRecipeFound.textContent = "Aucune recette ne correspond à votre critère";
+      document.querySelector(".menuArticles").appendChild(noRecipeFound)
+      return
+    }
   } else {
-    allIngList(recipes);
-    allApplList(recipes);
-    allUstList(recipes);
-    displayMenu(recipes);
+    globalList(recipes)
     return;
   }
 }
