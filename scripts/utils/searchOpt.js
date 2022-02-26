@@ -17,15 +17,11 @@ function filtering() {
     if (ingOpt.length == 0) {
       if (applOpt.length > 0) {
         SearchApplianceOptions(recipeList);
-        if (ustOpt.length == 0) {
-        }
         if (ustOpt.length > 0) {
           SearchUstensilsOptions(recipeApplianceList);
         }
       }
       if (applOpt.length == 0) {
-        if (ustOpt.length == 0) {
-        }
         if (ustOpt.length > 0) {
           SearchApplianceOptions(recipeBuild);
         }
@@ -35,15 +31,11 @@ function filtering() {
       SearchIngredientOptions(recipeList);
       if (applOpt.length > 0) {
         SearchApplianceOptions(recipeIngredientsList);
-        if (ustOpt.length == 0) {
-        }
         if (ustOpt.length > 0) {
           SearchUstensilsOptions(recipeApplianceList);
         }
       }
       if (applOpt.length == 0) {
-        if (ustOpt.length == 0) {
-        }
         if (ustOpt.length > 0) {
           SearchUstensilsOptions(recipeIngredientsList);
         }
@@ -53,36 +45,24 @@ function filtering() {
     if (ingOpt.length == 0) {
       if (applOpt.length > 0) {
         SearchApplianceOptions(recipes);
-        if (ustOpt.length == 0) {
-        }
         if (ustOpt.length > 0) {
           SearchUstensilsOptions(recipeApplianceList);
         }
       }
-      if (applOpt.length == 0) {
-        if (ustOpt.length == 0) {
-        }
-        if (ustOpt.length > 0) {
-          SearchUstensilsOptions(recipes);
-        }
+      if (applOpt.length == 0 && ustOpt.length > 0) {
+        SearchUstensilsOptions(recipes);
       }
     }
     if (ingOpt.length > 0) {
       SearchIngredientOptions(recipes);
       if (applOpt.length > 0) {
         SearchApplianceOptions(recipeIngredientsList);
-        if (ustOpt.length == 0) {
-        }
         if (ustOpt.length > 0) {
           SearchUstensilsOptions(recipeApplianceList);
         }
       }
-      if (applOpt.length == 0) {
-        if (ustOpt.length == 0) {
-        }
-        if (ustOpt.length > 0) {
-          SearchUstensilsOptions(recipeIngredientsList);
-        }
+      if (applOpt.length == 0 && ustOpt.length > 0) {
+        SearchUstensilsOptions(recipeIngredientsList);
       }
     }
   }
@@ -123,8 +103,8 @@ function itemList() {
 
 document.querySelector("#ingredientList").addEventListener("click", function (event) {
   if (
-    event.target.innerText.match(/(\n)/g) == null &&
-    event.target.innerText != "Ingredients"
+    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
+      event.target.innerText != "Ingredients" && event.target.innerHTML != ingInput.innerHTML)
   ) {
     filtering();
     document.querySelectorAll(".IngOpt").forEach(element => element.addEventListener("click", removeOpt))
@@ -182,8 +162,8 @@ function SearchIngredientOptions(recipeBuild) {
 
 document.querySelector("#applianceList").addEventListener("click", function (event) {
   if (
-    event.target.innerText.match(/(\n)/g) == null &&
-    event.target.innerText != "Appareils"
+     (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
+      event.target.innerText != "Appareils" && event.target.innerHTML != ustInput.innerHTML)
   ) {
     filtering();
     document.querySelectorAll(".ApplOpt").forEach(element => element.addEventListener("click", removeOpt))
@@ -215,8 +195,8 @@ function SearchApplianceOptions(recipeBuild) {
 
 document.querySelector("#ustensilList").addEventListener("click", function (event) {
   if (
-    event.target.innerText.match(/(\n)/g) == null &&
-    event.target.innerText != "Ustensiles"
+    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
+    event.target.innerText != "Ustensiles" && event.target.innerHTML != ustInput.innerHTML)
   ) {
     filtering();
     document.querySelectorAll(".UstOpt").forEach(element => element.addEventListener("click", removeOpt))
@@ -286,9 +266,21 @@ function goodListing(querySelector1, Opt) {
   for (i2 = 0; i2 < document.querySelector(querySelector1).children.length; i2++) {
     optionList.push(document.querySelector(querySelector1).children[i2].innerText)
   }
+  const sel = document.querySelector(querySelector1);
   for (i = 0; i < Opt.length; i++) {
-    index = optionList.indexOf(Opt[i].innerText);
-    index = index - i;
-    document.querySelector(querySelector1).children[index].outerHTML = "";
+    let index = optionList.indexOf(Opt[i].innerText);
+    if (index >= 0) {
+      sel.removeChild(sel.children[index]);
+      optionList.splice(index, 1);
+    }0
+  }
+  if(document.querySelector("#ingInputField") != null){
+    ingInputSearch()
+  }
+  if(document.querySelector("#applInputField") != null){
+    applInputSearch()
+  }
+  if(document.querySelector("#ustInputField") != null){
+    ustInputSearch()
   }
 }

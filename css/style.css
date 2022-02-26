@@ -119,6 +119,9 @@ font-family:"Lato", "DM Sans", sans-serif
     width: 100%;
     column-gap: 20px;
 }
+ul{
+    padding-inline-start: 20px;
+}
 #ingredientList{   
     background:#3282F7;
     height: 69px;
@@ -141,8 +144,49 @@ font-family:"Lato", "DM Sans", sans-serif
     max-width: 1000px;
     padding-bottom: 5px;
 }
+#ingredientList.active li{
+    display: block;
+}
+#ingInput{
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    min-height: 69px;
+    min-width: 170px;
+    max-width: 200px;
+    gap: 10px;
+    padding: 0px;
+    margin: 0px;
+}
+.DropDownIcon{
+    padding: 10px;
+    justify-self: right;
+}
+.active .DropDownIcon{
+   transform:rotate(180deg);
+}
+.searchIcon{
+    grid-area: 1/1/1/1;
+    justify-self: right;
+}
+#ingInput input{
+    grid-area: 1/1/1/1;
+    background: none;
+    height: 100%;
+    max-height: 50%;
+    color: white;
+    max-width: 170px;
+    width: 100%;
+    border: 2px black;
+}
+#ingInput input::placeholder{
+    color:white
+}
 #ingredientList li{
     display: none;
+    width: fit-content;
     margin-top: 3px;
     max-width: 150px;
     line-height: 15px;
@@ -172,11 +216,40 @@ font-family:"Lato", "DM Sans", sans-serif
 }
 #applianceList li{
     display: none;
+    width: fit-content;
     margin-top: 3px;
     max-width: 150px;
     line-height: 15px;
 }
-
+#applianceList.active li{
+    display: block;
+}
+#applInput{
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    min-height: 69px;
+    min-width: 170px;
+    max-width: 200px;
+    gap: 10px;
+    padding: 0px;
+    margin: 0px;
+}
+#applInput input{
+    grid-area: 1/1/1/1;
+    background: none;
+    height: 100%;
+    max-height: 50%;
+    color: white;
+    max-width: 170px;
+    width: 100%;
+    border: 2px black;
+}
+#applInput input::placeholder{
+    color:white
+}
 #ustensilList{
     background:#ED6454;
     height: 69px;
@@ -201,6 +274,42 @@ font-family:"Lato", "DM Sans", sans-serif
 }
 #ustensilList li{
     display: none;
+    margin-top: 3px;
+    max-width: 150px;
+    line-height: 15px;
+}
+#ustensilList.active li{
+    display: block;
+}
+#ustInput{
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    min-height: 69px;
+    min-width: 170px;
+    max-width: 200px;
+    gap: 10px;
+    padding: 0px;
+    margin: 0px;
+}
+#ustInput input{
+    grid-area: 1/1/1/1;
+    background: none;
+    height: 100%;
+    max-height: 50%;
+    color: white;
+    max-width: 170px;
+    width: 100%;
+    border: 2px black;
+}
+#ustInput input::placeholder{
+    color:white
+}
+#ustensilList li{
+    display: none;
+    width: fit-content;
     margin-top: 3px;
     max-width: 150px;
     line-height: 15px;

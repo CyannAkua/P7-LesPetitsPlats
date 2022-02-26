@@ -2,29 +2,25 @@ var allIngredientsList = "";
 var allAppliancesList = "";
 var allUstensilsList = "";
 
-function allELListener(){
-  ELListShown("#ingredientList","#ingredientList li")
-  ELListShown("#applianceList","#applianceList li")
-  ELListShown("#ustensilList","#ustensilList li")
+function allELListener() {
+  ELListShown("#ingredientList", "#ingredientList li", "#ingredientList .DropDownIcon",ingInputSearchField)
+  ELListShown("#applianceList", "#applianceList li", "#applianceList .DropDownIcon",applInputSearchField)
+  ELListShown("#ustensilList", "#ustensilList li", "#ustensilList .DropDownIcon",ustInputSearchField)
 }
-allELListener()
 
-function ELListShown(parameter1,parameter2){
-  document.querySelector(parameter1).addEventListener("click", function () {
+function ELListShown(parameter1, parameter2, parameter3,functionCall) {
+  document.querySelector(parameter3).addEventListener("click", function () {
     const listIng = document.querySelectorAll(parameter2);
-    for (i = 0; i < listIng.length; i++) {
-      if (listIng[i].style.display != "") {
-        listIng[i].style.display = "";
+      if (document.querySelector(parameter1).className != "") {
         document.querySelector(parameter1).setAttribute("class", "");
-      } 
+      }
       else {
-        listIng[i].style.display = "block";
         document
           .querySelector(parameter1)
-          .setAttribute("class", "active");
-      }
-}
-})
+          .setAttribute("class", "active")   
+      } 
+    functionCall()
+  })
 }
 
 let allIngredientsListTemp = [];
@@ -55,11 +51,13 @@ function allIngList(recipeBuild) {
 }
 function innerIngredientsFunction() {
   allIngredientsList = "";
+  let li = document.querySelectorAll("#ingredientList li")
+  li.forEach(element => element.remove())
   for (i = 0; i < allIngredientsListTemp.length; i++) {
-    allIngredientsList += "<li>" + allIngredientsListTemp[i] + "</li>";
+    const ingredientList = document.createElement("li")
+    ingredientList.innerText = allIngredientsListTemp[i]
+    document.querySelector("#ingredientList").appendChild(ingredientList)
   }
-  document.querySelector("#ingredientList").innerHTML =
-    "Ingredients" + allIngredientsList;
 }
 
 let allApplianceListTemp = [];
@@ -87,13 +85,15 @@ function allApplList(recipeBuild) {
   innerApplianceFunction();
 }
 function innerApplianceFunction() {
-  allAppliancesList = "";
+  allApplianceList = "";
+  let li = document.querySelectorAll("#applianceList li")
+  li.forEach(element => element.remove())
   for (i = 0; i < allApplianceListTemp.length; i++) {
-    allAppliancesList += "<li>" + allApplianceListTemp[i] + "</li>";
-  }
-  document.querySelector("#applianceList").innerHTML =
-    "Appareils" + allAppliancesList;
-}
+    const applianceList = document.createElement("li")
+    applianceList.innerText = allApplianceListTemp[i]
+    document.querySelector("#applianceList").appendChild(applianceList)
+}}
+
 let allUstensilsListTemp = [];
 function allUstList(recipeBuild) {
   allUstensilsListTemp = [];
@@ -122,56 +122,61 @@ function allUstList(recipeBuild) {
 }
 function innerUstensilsFunction() {
   allUstensilsList = "";
+  let li = document.querySelectorAll("#ustensilList li")
+  li.forEach(element => element.remove())
   for (i = 0; i < allUstensilsListTemp.length; i++) {
-    allUstensilsList += "<li>" + allUstensilsListTemp[i] + "</li>";
+    const applianceList = document.createElement("li")
+    applianceList.innerText = allUstensilsListTemp[i]
+    document.querySelector("#ustensilList").appendChild(applianceList);
   }
-  document.querySelector("#ustensilList").innerHTML =
-    "Ustensiles" + allUstensilsList;
 }
 
 document.querySelector("#ingredientList").addEventListener("click", function (event) {
-    if (
-      event.target.innerText.match(/(\n)/g) == null &&
-      event.target.innerText != "Ingredients"
-    ) {
-      const selectOptMark = document.createElement("div");
-      selectOptMark.textContent = event.target.innerText;
-      document.querySelector(".selectListOption").appendChild(selectOptMark);
-      selectOptMark.setAttribute("class", "IngOpt");
-      innerIngredientsFunction();
-    }
+  ingInput = document.querySelector("#ingInput")
+  if (
+    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
+      event.target.innerText != "Ingredients" && event.target.innerHTML != ingInput.innerHTML)
+  ) {
+    const selectOptMark = document.createElement("div");
+    selectOptMark.textContent = event.target.innerText;
+    document.querySelector(".selectListOption").appendChild(selectOptMark);
+    selectOptMark.setAttribute("class", "IngOpt");
+    innerIngredientsFunction();
   }
+
+}
 );
 document.querySelector("#applianceList").addEventListener("click", function (event) {
-    if (
-      event.target.innerText.match(/(\n)/g) == null &&
-      event.target.innerText != "Appareils"
-    ) {
-      const selectOptMark = document.createElement("div");
-      selectOptMark.textContent = event.target.innerText;
-      document.querySelector(".selectListOption").appendChild(selectOptMark);
-      selectOptMark.setAttribute("class", "ApplOpt");
-      innerApplianceFunction();
-    }
+  if (
+    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
+    event.target.innerText != "Appareils" && event.target.innerHTML != ustInput.innerHTML)
+  ) {
+    const selectOptMark = document.createElement("div");
+    selectOptMark.textContent = event.target.innerText;
+    document.querySelector(".selectListOption").appendChild(selectOptMark);
+    selectOptMark.setAttribute("class", "ApplOpt");
+    innerApplianceFunction();
   }
+}
 );
 document.querySelector("#ustensilList").addEventListener("click", function (event) {
-    if (
-      event.target.innerText.match(/(\n)/g) == null &&
-      event.target.innerText != "Ustensiles"
-    ) {
-      const selectOptMark = document.createElement("div");
-      selectOptMark.textContent = event.target.innerText;
-      document.querySelector(".selectListOption").appendChild(selectOptMark);
-      selectOptMark.setAttribute("class", "UstOpt");
-      innerUstensilsFunction();
-    }
+  if (
+    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
+    event.target.innerText != "Ustensiles" && event.target.innerHTML != ustInput.innerHTML)
+  ) {
+    const selectOptMark = document.createElement("div");
+    selectOptMark.textContent = event.target.innerText;
+    document.querySelector(".selectListOption").appendChild(selectOptMark);
+    selectOptMark.setAttribute("class", "UstOpt");
+    innerUstensilsFunction();
   }
+}
 )
-function globalList(recipeBuild){
+function globalList(recipeBuild) {
   allIngList(recipeBuild)
   allApplList(recipeBuild)
   allUstList(recipeBuild)
   displayMenu(recipeBuild)
 }
 globalList(recipes)
+allELListener()

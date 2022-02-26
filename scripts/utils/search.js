@@ -5,14 +5,14 @@ searchBar.addEventListener("keyup", (e) => {
   recipeList = [];
   if (searchString.length >= 3) {
     for (i = 0; i < recipes.length; i++) {
-      if (recipes[i].name.toLowerCase().indexOf(searchString) > -1) {
+      if (recipes[i].name.toLowerCase().search('\\b' +searchString) > -1) {
         recipeList.push(recipes[i]);
       }
       for (i2 = 0; i2 < recipes[i].ingredients.length; i2++) {
         if (
           recipes[i].ingredients[i2].ingredient
             .toLowerCase()
-            .indexOf(searchString) > -1
+            .search('\\b' +searchString) > -1
         ) {
           recipeList.push(recipes[i]);
         }
@@ -20,11 +20,11 @@ searchBar.addEventListener("keyup", (e) => {
       if (recipes[i].description.toLowerCase().match(searchString) == true) {
         recipeList.push(recipes[i]);
       }
-      if (recipes[i].appliance.toLowerCase().indexOf(searchString) > -1){
+      if (recipes[i].appliance.toLowerCase().match(searchString) == true){
         recipeList.push(recipes[i]);
       }
       for (i2 = 0; i2 < recipes[i].ustensils.length; i2++){
-        if(recipes[i].ustensils[i2].toLowerCase().indexOf(searchString) > -1){
+        if(recipes[i].ustensils[i2].toLowerCase().match(searchString) == true){
           recipeList.push(recipes[i])
         }
       }
@@ -34,7 +34,7 @@ searchBar.addEventListener("keyup", (e) => {
         recipeList.splice(i, 1);
         i = i-1
       }
-    }    
+    }
   }
   filtering()
 });
