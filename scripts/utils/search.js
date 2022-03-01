@@ -4,31 +4,26 @@ searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   recipeList = [];
   if (searchString.length >= 3) {
-    for (i = 0; i < recipes.length; i++) {
-      if (recipes[i].name.toLowerCase().search('\\b' +searchString) > -1) {
-        recipeList.push(recipes[i]);
+    recipes.forEach(function(recipe){
+      if(recipe.name.toLowerCase().search('\\b' +searchString) > -1){
+        recipeList.push(recipe);
       }
-      for (i2 = 0; i2 < recipes[i].ingredients.length; i2++) {
-        if (
-          recipes[i].ingredients[i2].ingredient
-            .toLowerCase()
-            .search('\\b' +searchString) > -1
-        ) {
-          recipeList.push(recipes[i]);
-        }
+      recipe.ingredients.forEach(function(element){
+        if(element.ingredient.toLowerCase().search('\\b' +searchString) > -1){
+        recipeList.push(recipe);
       }
-      if (recipes[i].description.toLowerCase().match(searchString) == true) {
-        recipeList.push(recipes[i]);
+    })
+      if (recipe.description.toLowerCase().match(searchString) == true) {
+        recipeList.push(recipe);
       }
-      if (recipes[i].appliance.toLowerCase().match(searchString) == true){
-        recipeList.push(recipes[i]);
+      if (recipe.appliance.toLowerCase().match(searchString) == true){
+        recipeList.push(recipe);
       }
-      for (i2 = 0; i2 < recipes[i].ustensils.length; i2++){
-        if(recipes[i].ustensils[i2].toLowerCase().match(searchString) == true){
-          recipeList.push(recipes[i])
-        }
-      }
-    }
+      recipe.ustensils.forEach(function(element){
+        if(element.toLowerCase().match(searchString) == true){
+        recipeList.push(recipe)
+      }})
+    });
     for (i = 0; i < recipeList.length; i++) {
       if (recipeList[i] == recipeList[i - 1]||recipeList[i] == recipeList[i + 1]) {
         recipeList.splice(i, 1);

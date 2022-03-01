@@ -263,10 +263,10 @@ function globalGoodListing() {
 
 function goodListing(querySelector1, Opt) {
   let optionList = [];
-  for (i2 = 0; i2 < document.querySelector(querySelector1).children.length; i2++) {
-    optionList.push(document.querySelector(querySelector1).children[i2].innerText)
-  }
   const sel = document.querySelector(querySelector1);
+  for (i = 0; i < sel.children.length; i++) {
+    optionList.push(sel.children[i].innerText)
+  }
   for (i = 0; i < Opt.length; i++) {
     let index = optionList.indexOf(Opt[i].innerText);
     if (index >= 0) {

@@ -25,16 +25,9 @@ function ELListShown(parameter1, parameter2,functionCall) {
 let allIngredientsListTemp = [];
 function allIngList(recipeBuild) {
   allIngredientsListTemp = [];
-  for (i = 0; i < recipeBuild.length; i++) {
-    for (i2 = 0; i2 < recipeBuild[i].ingredients.length; i2++) {
-      allIngredientsListTemp.push(
-        recipeBuild[i].ingredients[i2].ingredient
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-      );
-    }
-  }
+  recipeBuild.forEach(recipe => recipe.ingredients.forEach(element => allIngredientsListTemp.push(element.ingredient.toLowerCase()
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, ""))))
   allIngredientsListTemp.join();
   allIngredientsListTemp.sort();
   for (i = 0; i < allIngredientsListTemp.length; i++) {
@@ -52,24 +45,18 @@ function innerIngredientsFunction() {
   allIngredientsList = "";
   let li = document.querySelectorAll("#ingredientList li")
   li.forEach(element => element.remove())
-  for (i = 0; i < allIngredientsListTemp.length; i++) {
-    const ingredientList = document.createElement("li")
-    ingredientList.innerText = allIngredientsListTemp[i]
-    document.querySelector("#ingredientList").appendChild(ingredientList)
-  }
+  allIngredientsListTemp.forEach(function(element){ 
+    const ingredientList = document.createElement("li");
+    ingredientList.innerText = element;
+    document.querySelector("#ingredientList").appendChild(ingredientList);})
 }
 
 let allApplianceListTemp = [];
 function allApplList(recipeBuild) {
   allApplianceListTemp = [];
-  for (i = 0; i < recipeBuild.length; i++) {
-    allApplianceListTemp.push(
-      recipeBuild[i].appliance
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-    );
-  }
+  recipeBuild.forEach(recipe => allApplianceListTemp.push(recipe.appliance.toLowerCase()
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")))
   allApplianceListTemp.join();
   allApplianceListTemp.sort();
   for (i = 0; i < allApplianceListTemp.length; i++) {
@@ -87,25 +74,20 @@ function innerApplianceFunction() {
   allApplianceList = "";
   let li = document.querySelectorAll("#applianceList li")
   li.forEach(element => element.remove())
-  for (i = 0; i < allApplianceListTemp.length; i++) {
-    const applianceList = document.createElement("li")
-    applianceList.innerText = allApplianceListTemp[i]
-    document.querySelector("#applianceList").appendChild(applianceList)
-}}
+  allApplianceListTemp.forEach(function(element){ 
+    const applianceList = document.createElement("li");
+    applianceList.innerText = element;
+    document.querySelector("#applianceList").appendChild(applianceList);})
+}
 
 let allUstensilsListTemp = [];
 function allUstList(recipeBuild) {
   allUstensilsListTemp = [];
-  for (i = 0; i < recipeBuild.length; i++) {
-    for (i2 = 0; i2 < recipeBuild[i].ustensils.length; i2++) {
-      allUstensilsListTemp.push(
-        recipeBuild[i].ustensils[i2]
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-      );
-    }
-  }
+  recipeBuild.forEach(recipe => 
+    recipe.ustensils.forEach(element => allUstensilsListTemp.push(element.toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") )
+      ))
   allUstensilsListTemp.join();
   allUstensilsListTemp.sort();
   for (i = 0; i < allUstensilsListTemp.length; i++) {
@@ -123,11 +105,10 @@ function innerUstensilsFunction() {
   allUstensilsList = "";
   let li = document.querySelectorAll("#ustensilList li")
   li.forEach(element => element.remove())
-  for (i = 0; i < allUstensilsListTemp.length; i++) {
-    const applianceList = document.createElement("li")
-    applianceList.innerText = allUstensilsListTemp[i]
-    document.querySelector("#ustensilList").appendChild(applianceList);
-  }
+  allUstensilsListTemp.forEach(function(element){ 
+    const applianceList = document.createElement("li");
+  applianceList.innerText = element;
+  document.querySelector("#ustensilList").appendChild(applianceList);})
 }
 
 document.querySelector("#ingredientList").addEventListener("click", function (event) {
