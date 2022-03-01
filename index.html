@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link rel="stylesheet" href="css/style.css" />
-    <meta charset="utf-8" />
-    <title>Les petits plats</title>
-  </head>
-  <body>
-    <header>
-      <div class="banner">
-        <img src="asset/icons/LPPIcon.png" />
-        <h1>Les petits plats</h1>
-      </div>
-      <div id="searchWrapper">
-        <input
-          type="text"
-          name="searchBar"
-          id="searchBar"
-          placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
-        />
-        <img src="asset/icons/Search.svg" class="searchIcon">
-      </div>
-      <div class="selectListOption"></div>
-      <div id="listWrapper">
-        <ul id="ingredientList">
-          <span id= ingInput>Ingredients<img src=asset/icons/DropDown.svg class=DropDownIcon alt="drop down arrow"></span>
-        </ul>
-        <ul id="applianceList">
-          <span id= applInput>Appareils<img src=asset/icons/DropDown.svg class=DropDownIcon alt="drop down arrow"></span>
-        </ul>
-        <ul id="ustensilList">
-          <span id= ustInput>Ustensiles<img src=asset/icons/DropDown.svg class=DropDownIcon alt="drop down arrow"></span>
-        </ul>
-      </div>
-    </header>
-    <main>
-      <div class="menuArticles"></div>
-    </main>
-    <script src="data/recipes.js"></script>
-    <script src="scripts/factories/factoryMenu.js"></script>
-    <script src="scripts/pages/index.js"></script>
-    <script src="scripts/utils/search.js"></script>
-    <script src="scripts/utils/tagSearch.js"></script>
-    <script src="scripts/utils/othersearch.js"></script>
-    <script src="scripts/utils/searchOpt.js"></script>
-  </body>
+
+<head>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8" />
+  <title>Les petits plats</title>
+</head>
+
+<body>
+  <header>
+    <div class="banner">
+      <img src="asset/icons/LPPIcon.png" alt="" />
+      <h1>Les petits plats</h1>
+    </div>
+    <div id="searchWrapper">
+      <input type="text" name="searchBar" id="searchBar"
+        placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette" />
+      <img src="asset/icons/Search.svg" class="searchIcon" alt="" />
+    </div>
+    <div class="selectListOption"></div>
+    <div id="listWrapper">
+      <ul id="ingredientList">
+        <span id="ingInput">Ingredients<img src=asset/icons/DropDown.svg class=DropDownIcon
+            alt="drop down arrow"></span>
+      </ul>
+      <ul id="applianceList">
+        <span id="applInput">Appareils<img src=asset/icons/DropDown.svg class=DropDownIcon alt="drop down arrow"></span>
+      </ul>
+      <ul id="ustensilList">
+        <span id="ustInput">Ustensiles<img src=asset/icons/DropDown.svg class=DropDownIcon alt="drop down arrow"></span>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="menuArticles"></div>
+  </main>
+  <script src="data/recipes.js"></script>
+  <script src="scripts/factories/factoryMenu.js"></script>
+  <script src="scripts/pages/index.js"></script>
+  <script src="scripts/utils/search.js"></script>
+  <script src="scripts/utils/tagSearch.js"></script>
+  <script src="scripts/utils/othersearch.js"></script>
+  <script src="scripts/utils/searchOpt.js"></script>
+</body>
+
 </html>

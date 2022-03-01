@@ -1,11 +1,14 @@
 var allIngredientsList = "";
 var allAppliancesList = "";
 var allUstensilsList = "";
+let allIngredientsListTemp = [];
+let allApplianceListTemp = [];
+let allUstensilsListTemp = [];
 
 function allELListener() {
-  ELListShown("#ingredientList", "#ingredientList .DropDownIcon",0)
-  ELListShown("#applianceList", "#applianceList .DropDownIcon",1)
-  ELListShown("#ustensilList", "#ustensilList .DropDownIcon",2)
+  ELListShown("#ingredientList", "#ingredientList .DropDownIcon",0);
+  ELListShown("#applianceList", "#applianceList .DropDownIcon",1);
+  ELListShown("#ustensilList", "#ustensilList .DropDownIcon",2);
 }
 
 function ELListShown(parameter1, parameter2,functionCall) {
@@ -30,12 +33,9 @@ function ELListShown(parameter1, parameter2,functionCall) {
   })
 }
 
-let allIngredientsListTemp = [];
 function allIngList(recipeBuild) {
   allIngredientsListTemp = [];
-  recipeBuild.forEach(recipe => recipe.ingredients.forEach(element => allIngredientsListTemp.push(element.ingredient.toLowerCase()
-  .normalize("NFD")
-  .replace(/[\u0300-\u036f]/g, ""))))
+  recipeBuild.forEach(recipe => recipe.ingredients.forEach(element => allIngredientsListTemp.push(element.ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))))
   allIngredientsListTemp.join();
   allIngredientsListTemp.sort();
   for (i = 0; i < allIngredientsListTemp.length; i++) {
@@ -44,27 +44,24 @@ function allIngList(recipeBuild) {
       allIngredientsListTemp[i] == allIngredientsListTemp[i + 1]
     ) {
       allIngredientsListTemp.splice(i, 1);
-      i = i - 1;
+      i--;
     }
   }
   innerIngredientsFunction();
 }
 function innerIngredientsFunction() {
   allIngredientsList = "";
-  let li = document.querySelectorAll("#ingredientList li")
+  let li = document.querySelectorAll("#ingredientList li");
   li.forEach(element => element.remove())
   allIngredientsListTemp.forEach(function(element){ 
     const ingredientList = document.createElement("li");
     ingredientList.innerText = element;
-    document.querySelector("#ingredientList").appendChild(ingredientList);})
+    document.querySelector("#ingredientList").appendChild(ingredientList);});
 }
 
-let allApplianceListTemp = [];
 function allApplList(recipeBuild) {
   allApplianceListTemp = [];
-  recipeBuild.forEach(recipe => allApplianceListTemp.push(recipe.appliance.toLowerCase()
-  .normalize("NFD")
-  .replace(/[\u0300-\u036f]/g, "")))
+  recipeBuild.forEach(recipe => allApplianceListTemp.push(recipe.appliance.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
   allApplianceListTemp.join();
   allApplianceListTemp.sort();
   for (i = 0; i < allApplianceListTemp.length; i++) {
@@ -73,29 +70,24 @@ function allApplList(recipeBuild) {
       allApplianceListTemp[i] == allApplianceListTemp[i + 1]
     ) {
       allApplianceListTemp.splice(i, 1);
-      i = i - 1;
+      i--;
     }
   }
   innerApplianceFunction();
 }
 function innerApplianceFunction() {
   allApplianceList = "";
-  let li = document.querySelectorAll("#applianceList li")
-  li.forEach(element => element.remove())
+  let li = document.querySelectorAll("#applianceList li");
+  li.forEach(element => element.remove());
   allApplianceListTemp.forEach(function(element){ 
     const applianceList = document.createElement("li");
     applianceList.innerText = element;
-    document.querySelector("#applianceList").appendChild(applianceList);})
+    document.querySelector("#applianceList").appendChild(applianceList)});
 }
 
-let allUstensilsListTemp = [];
 function allUstList(recipeBuild) {
   allUstensilsListTemp = [];
-  recipeBuild.forEach(recipe => 
-    recipe.ustensils.forEach(element => allUstensilsListTemp.push(element.toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") )
-      ))
+  recipeBuild.forEach(recipe => recipe.ustensils.forEach(element => allUstensilsListTemp.push(element.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))));
   allUstensilsListTemp.join();
   allUstensilsListTemp.sort();
   for (i = 0; i < allUstensilsListTemp.length; i++) {
@@ -104,15 +96,15 @@ function allUstList(recipeBuild) {
       allUstensilsListTemp[i] == allUstensilsListTemp[i + 1]
     ) {
       allUstensilsListTemp.splice(i, 1);
-      i = i - 1;
+      i--;
     }
   }
   innerUstensilsFunction();
 }
 function innerUstensilsFunction() {
   allUstensilsList = "";
-  let li = document.querySelectorAll("#ustensilList li")
-  li.forEach(element => element.remove())
+  let li = document.querySelectorAll("#ustensilList li");
+  li.forEach(element => element.remove());
   allUstensilsListTemp.forEach(function(element){ 
     const applianceList = document.createElement("li");
   applianceList.innerText = element;
@@ -120,48 +112,38 @@ function innerUstensilsFunction() {
 }
 
 document.querySelector("#ingredientList").addEventListener("click", function (event) {
-  ingInput = document.querySelector("#ingInput")
-  if (
-    event.target.tagName == "LI"
-  ) {
+  ingInput = document.querySelector("#ingInput");
+  if (event.target.tagName == "LI") {
     const selectOptMark = document.createElement("div");
     selectOptMark.textContent = event.target.innerText;
     document.querySelector(".selectListOption").appendChild(selectOptMark);
     selectOptMark.setAttribute("class", "IngOpt");
     innerIngredientsFunction();
   }
-
-}
-);
+});
 document.querySelector("#applianceList").addEventListener("click", function (event) {
-  if (
-    event.target.tagName == "LI"
-  ) {
+  if (event.target.tagName == "LI") {
     const selectOptMark = document.createElement("div");
     selectOptMark.textContent = event.target.innerText;
     document.querySelector(".selectListOption").appendChild(selectOptMark);
     selectOptMark.setAttribute("class", "ApplOpt");
     innerApplianceFunction();
   }
-}
-);
+});
 document.querySelector("#ustensilList").addEventListener("click", function (event) {
-  if (
-    event.target.tagName == "LI"
-  ) {
+  if (event.target.tagName == "LI") {
     const selectOptMark = document.createElement("div");
     selectOptMark.textContent = event.target.innerText;
     document.querySelector(".selectListOption").appendChild(selectOptMark);
     selectOptMark.setAttribute("class", "UstOpt");
     innerUstensilsFunction();
   }
-}
-)
+});
 function globalList(recipeBuild) {
-  allIngList(recipeBuild)
-  allApplList(recipeBuild)
-  allUstList(recipeBuild)
-  displayMenu(recipeBuild)
+  allIngList(recipeBuild);
+  allApplList(recipeBuild);
+  allUstList(recipeBuild);
+  displayMenu(recipeBuild);
 }
-globalList(recipes)
-allELListener()
+globalList(recipes);
+allELListener();

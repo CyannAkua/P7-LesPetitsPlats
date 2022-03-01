@@ -12,7 +12,7 @@ searchBar.addEventListener("keyup", (e) => {
         if(element.ingredient.toLowerCase().search('\\b' +searchString) > -1){
         recipeList.push(recipe);
       }
-    })
+      })
       if (recipe.description.toLowerCase().match(searchString) == true) {
         recipeList.push(recipe);
       }
@@ -21,15 +21,15 @@ searchBar.addEventListener("keyup", (e) => {
       }
       recipe.ustensils.forEach(function(element){
         if(element.toLowerCase().match(searchString) == true){
-        recipeList.push(recipe)
+        recipeList.push(recipe);
       }})
     });
     for (i = 0; i < recipeList.length; i++) {
       if (recipeList[i] == recipeList[i - 1]||recipeList[i] == recipeList[i + 1]) {
         recipeList.splice(i, 1);
-        i = i-1
+        i--;
       }
     }
   }
-  filtering()
+  filtering();
 });

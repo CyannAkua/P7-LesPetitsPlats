@@ -2,8 +2,6 @@ var searchOpt = "";
 let recipeIngredientsList = [];
 let recipeApplianceList = [];
 let recipeUstensilsList = [];
-let isIn = 0;
-let ustIn = 0;
 
 function filtering() {
   recipeIngredientsList = [];
@@ -102,170 +100,127 @@ function itemList() {
 }
 
 document.querySelector("#ingredientList").addEventListener("click", function (event) {
-  if (
-    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
-      event.target.innerText != "Ingredients" && event.target.innerHTML != ingInput.innerHTML)
-  ) {
+  if (event.target.tagName == "LI") {
     filtering();
     document.querySelectorAll(".IngOpt").forEach(element => element.addEventListener("click", removeOpt))
   }
-}
-);
+});
 
 function SearchIngredientOptions(recipeBuild) {
-  for (i = 0; i < recipeBuild.length; i++) {
-    for (i2 = 0; i2 < recipeBuild[i].ingredients.length; i2++) {
-      for (i3 = 0; i3 < ingOpt.length; i3++) {
-        if (
-          recipeBuild[i].ingredients[i2].ingredient
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") == ingOpt[i3].innerText
-        ) {
-          recipeIngredientsList.push(recipeBuild[i]);
+  recipeBuild.forEach(recipe =>
+    recipe.ingredients.forEach(function (ingred) {
+      ingOpt.forEach(function (ing) {
+        if (ingred.ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == ing.innerText) {
+          recipeIngredientsList.push(recipe);
         }
-      }
-    }
-  }
+      })
+    })
+  )
   if (ingOpt.length > 1) {
     for (i = 0; i < recipeIngredientsList.length; i++) {
-      isIn = 0;
-      for (i2 = 0; i2 < recipeIngredientsList[i].ingredients.length; i2++) {
-        for (i3 = 0; i3 < ingOpt.length; i3++) {
-          if (
-            recipeIngredientsList[i].ingredients[i2].ingredient
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "") == ingOpt[i3].innerText
-          ) {
-            isIn = isIn + 1;
+      let isIn = 0;
+      recipeIngredientsList[i].ingredients.forEach(function (ingred) {
+        ingOpt.forEach(function (ing) {
+          if (ingred.ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == ing.innerText) {
+            isIn++;
           }
-        }
-      }
+        })
+      })
       if (ingOpt.length == isIn) {
       } else {
         recipeIngredientsList.splice(i, 1);
-        i = i - 1;
+        i--;
       }
     }
   }
+
   for (i = 0; i < recipeIngredientsList.length; i++) {
-    if (
-      recipeIngredientsList[i] == recipeIngredientsList[i - 1] ||
-      recipeIngredientsList[i] == recipeIngredientsList[i + 1]
-    ) {
+    if (recipeIngredientsList[i] == recipeIngredientsList[i - 1] ||recipeIngredientsList[i] == recipeIngredientsList[i + 1]) {
       recipeIngredientsList.splice(i, 1);
-      i = i - 1;
+      i--;
     }
   }
 }
 
 document.querySelector("#applianceList").addEventListener("click", function (event) {
-  if (
-    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
-      event.target.innerText != "Appareils" && event.target.innerHTML != ustInput.innerHTML)
-  ) {
+  if (event.target.tagName == "LI"){
     filtering();
     document.querySelectorAll(".ApplOpt").forEach(element => element.addEventListener("click", removeOpt))
   }
-}
-);
+});
 function SearchApplianceOptions(recipeBuild) {
-  for (i = 0; i < recipeBuild.length; i++) {
-    for (i2 = 0; i2 < applOpt.length; i2++) {
-      if (
-        recipeBuild[i].appliance
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "") == applOpt[i2].innerText
-      ) {
-        recipeApplianceList.push(recipeBuild[i]);
-      }
+  recipeBuild.forEach(recipe => applOpt.forEach(function (appl) {
+    if (recipe.appliance.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == appl.innerText) {
+      recipeApplianceList.push(recipe)
     }
-  }
+  }))
   for (i = 0; i < recipeApplianceList.length; i++) {
-    if (recipeApplianceList[i] == recipeApplianceList[i - 1]) {
+    if (recipeApplianceList[i] == recipeApplianceList[i - 1] || recipeApplianceList[i] == recipeApplianceList[i + 1]) {
       recipeApplianceList.splice(i, 1);
-    }
-    if (recipeApplianceList[i] == recipeApplianceList[i + 1]) {
-      recipeApplianceList.splice(i, 1);
+      i--
     }
   }
 }
 
 document.querySelector("#ustensilList").addEventListener("click", function (event) {
-  if (
-    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
-      event.target.innerText != "Ustensiles" && event.target.innerHTML != ustInput.innerHTML)
-  ) {
+  console.log(event)
+  if (event.target.tagName == "LI"){
     filtering();
     document.querySelectorAll(".UstOpt").forEach(element => element.addEventListener("click", removeOpt))
   }
-}
-);
+});
 function SearchUstensilsOptions(recipeBuild) {
-  for (i = 0; i < recipeBuild.length; i++) {
-    for (i2 = 0; i2 < recipeBuild[i].ustensils.length; i2++) {
-      for (i3 = 0; i3 < ustOpt.length; i3++) {
-        if (
-          recipeBuild[i].ustensils[i2]
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") == ustOpt[i3].innerText
-        ) {
-          recipeUstensilsList.push(recipeBuild[i]);
-        }
+  recipeBuild.forEach(recipe => recipe.ustensils.forEach(function (ustensil) {
+    ustOpt.forEach(function (ust) {
+      if (ustensil.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == ust.innerText) {
+        recipeUstensilsList.push(recipe);
+      }
+    })
+  })
+);
+  if (ustOpt.length > 1){
+    for (i = 0; i < recipeUstensilsList.length; i++) {
+      let ustIn = 0
+      recipeUstensilsList[i].ustensils.forEach(function (ustensil) {
+        ustOpt.forEach(function (ust) {
+          if (ustensil.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == ust.innerText) {
+            ustIn++
+          }
+        })
+      })
+      if (ustOpt.length != ustIn) {
+        recipeUstensilsList.splice(i, 1);
+        i--;
       }
     }
   }
-  if (ustOpt.length > 1)
-    for (i = 0; i < recipeUstensilsList.length; i++) {
-      ustIn = 0;
-      for (i2 = 0; i2 < recipeUstensilsList[i].ustensils.length; i2++) {
-        for (i3 = 0; i3 < ustOpt.length; i3++) {
-          if (
-            recipeUstensilsList[i].ustensils[i2]
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "") == ustOpt[i3].innerText
-          ) {
-            ustIn = ustIn + 1;
-          }
-        }
-      }
-      if (ustOpt.length == ustIn) {
-      } else {
-        recipeUstensilsList.splice(i, 1);
-        i = i - 1;
-      }
-    }
   for (i = 0; i < recipeUstensilsList.length; i++) {
     if (
       recipeUstensilsList[i] == recipeUstensilsList[i - 1] ||
       recipeUstensilsList[i] == recipeUstensilsList[i + 1]
     ) {
       recipeUstensilsList.splice(i, 1);
-      i = i - 1;
+      i--;
     }
   }
 }
 
 function removeOpt(event) {
   event.target.outerHTML = "";
-  filtering()
+  filtering();
 }
 
 function globalGoodListing() {
-  goodListing("#ingredientList", ingOpt)
-  goodListing("#applianceList", applOpt)
-  goodListing("#ustensilList", ustOpt)
+  goodListing("#ingredientList", ingOpt);
+  goodListing("#applianceList", applOpt);
+  goodListing("#ustensilList", ustOpt);
 }
 
 function goodListing(querySelector1, Opt) {
   let optionList = [];
   const sel = document.querySelector(querySelector1);
   for (i = 0; i < sel.children.length; i++) {
-    optionList.push(sel.children[i].innerText)
+    optionList.push(sel.children[i].innerText);
   }
   for (i = 0; i < Opt.length; i++) {
     let index = optionList.indexOf(Opt[i].innerText);
@@ -275,12 +230,12 @@ function goodListing(querySelector1, Opt) {
     }
   }
   if (document.querySelector("#ingInputField") != null) {
-    inputSearch(document.querySelectorAll("#ingredientList li"),document.querySelector("#ingInputField").value.toLowerCase())
+    inputSearch(document.querySelectorAll("#ingredientList li"), document.querySelector("#ingInputField").value.trim().toLowerCase());
   }
   if (document.querySelector("#applInputField") != null) {
-    inputSearch(document.querySelectorAll("#applianceList li"),document.querySelector("#applInputField").value.toLowerCase())
+    inputSearch(document.querySelectorAll("#applianceList li"), document.querySelector("#applInputField").value.trim().toLowerCase());
   }
   if (document.querySelector("#ustInputField") != null) {
-    inputSearch(document.querySelectorAll("#ustensilList li"),document.querySelector("#ustInputField").value.toLowerCase())
+    inputSearch(document.querySelectorAll("#ustensilList li"), document.querySelector("#ustInputField").value.trim().toLowerCase());
   }
 }

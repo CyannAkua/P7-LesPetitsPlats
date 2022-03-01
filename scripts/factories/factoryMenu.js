@@ -15,31 +15,14 @@ function factoryMenu(recipe) {
     const ingredientsdiv = document.createElement("div");
     const ingredienth3 = document.createElement("h3");
     for (let i = 0; i < ingredients.length; i++) {
+      tempText += ingredients[i].ingredient;
+      if (ingredients[i].quantity != null) {
+        tempText += ": <i>" + ingredients[i].quantity + "</i>";
+      }
       if (ingredients[i].unit != null) {
-        tempText =
-          tempText +
-          ingredients[i].ingredient +
-          ": " +
-          "<i>" +
-          ingredients[i].quantity +
-          " " +
-          ingredients[i].unit +
-          "</i>" +
-          "<br>";
+        tempText += " <i>" + ingredients[i].unit + "</i>";
       }
-      if (ingredients[i].unit == null && ingredients[i].quantity != null) {
-        tempText =
-          tempText +
-          ingredients[i].ingredient +
-          ": " +
-          "<i>" +
-          ingredients[i].quantity +
-          "</i>" +
-          "<br>";
-      }
-      if (ingredients[i].quantity == null) {
-        tempText = tempText + ingredients[i].ingredient + "<br>";
-      }
+      tempText += "<br>";
     }
     ingredienth3.innerHTML = tempText;
     tempText = "";
