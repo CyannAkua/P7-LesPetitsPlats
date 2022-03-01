@@ -272,7 +272,7 @@ function goodListing(querySelector1, Opt) {
     if (index >= 0) {
       sel.removeChild(sel.children[index]);
       optionList.splice(index, 1);
-    }0
+    }
   }
   if(document.querySelector("#ingInputField") != null){
     ingInputSearch()

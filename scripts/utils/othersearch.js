@@ -134,8 +134,7 @@ function innerUstensilsFunction() {
 document.querySelector("#ingredientList").addEventListener("click", function (event) {
   ingInput = document.querySelector("#ingInput")
   if (
-    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
-      event.target.innerText != "Ingredients" && event.target.innerHTML != ingInput.innerHTML)
+    event.target.tagName == "LI"
   ) {
     const selectOptMark = document.createElement("div");
     selectOptMark.textContent = event.target.innerText;
@@ -148,8 +147,7 @@ document.querySelector("#ingredientList").addEventListener("click", function (ev
 );
 document.querySelector("#applianceList").addEventListener("click", function (event) {
   if (
-    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
-    event.target.innerText != "Appareils" && event.target.innerHTML != ustInput.innerHTML)
+    event.target.tagName == "LI"
   ) {
     const selectOptMark = document.createElement("div");
     selectOptMark.textContent = event.target.innerText;
@@ -161,8 +159,7 @@ document.querySelector("#applianceList").addEventListener("click", function (eve
 );
 document.querySelector("#ustensilList").addEventListener("click", function (event) {
   if (
-    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
-    event.target.innerText != "Ustensiles" && event.target.innerHTML != ustInput.innerHTML)
+    event.target.tagName == "LI"
   ) {
     const selectOptMark = document.createElement("div");
     selectOptMark.textContent = event.target.innerText;

@@ -139,7 +139,7 @@ ul{
     display:flex;
     height: fit-content;
     max-height: 800px;
-    width: 100%;
+    width: max-content;
     min-width: 170px;
     max-width: 1000px;
     padding-bottom: 5px;

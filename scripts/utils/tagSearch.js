@@ -43,12 +43,12 @@ function ustInputSearchField() {
             "Ustensiles" +
             '<img src="asset/icons/DropDown.svg" class="DropDownIcon">';
     }
-    allELListener() 
+    allELListener()
 }
 function ingInputSearchEL() {
     filtering()
-    }
-    function ingInputSearch(){
+}
+function ingInputSearch() {
     const sel = document.querySelectorAll("#ingredientList li");
     const input = document.querySelector("#ingInputField").value.toLowerCase();
     if (input.match(/^\s/) == null && input != "") {
@@ -60,8 +60,8 @@ function ingInputSearchEL() {
         for (i2 = 0; i2 < optionList.length; i2++) {
             if (optionList[i2].search("\\b" + input) == -1) {
                 sel.item(index).remove();
-                optionList.splice(i2,1)
-                i2--          
+                optionList.splice(i2, 1)
+                i2--
             }
             index++
         }
@@ -70,8 +70,8 @@ function ingInputSearchEL() {
 
 function applInputSearchEL() {
     filtering()
-    }
-    function applInputSearch(){
+}
+function applInputSearch() {
     const sel = document.querySelectorAll("#applianceList li");
     const input = document.querySelector("#applInputField").value.toLowerCase();
     if (input.match(/^\s/) == null && input != "") {
@@ -83,8 +83,8 @@ function applInputSearchEL() {
         for (i2 = 0; i2 < optionList.length; i2++) {
             if (optionList[i2].search("\\b" + input) == -1) {
                 sel.item(index).remove();
-                optionList.splice(i2,1)
-                i2--          
+                optionList.splice(i2, 1)
+                i2--
             }
             index++
         }
@@ -93,8 +93,8 @@ function applInputSearchEL() {
 
 function ustInputSearchEL() {
     filtering()
-    }
-    function ustInputSearch(){
+}
+function ustInputSearch() {
     const sel = document.querySelectorAll("#ustensilList li");
     const input = document.querySelector("#ustInputField").value.toLowerCase();
     if (input.match(/^\s/) == null && input != "") {
@@ -106,8 +106,8 @@ function ustInputSearchEL() {
         for (i2 = 0; i2 < optionList.length; i2++) {
             if (optionList[i2].search("\\b" + input) == -1) {
                 sel.item(index).remove();
-                optionList.splice(i2,1)
-                i2--          
+                optionList.splice(i2, 1)
+                i2--
             }
             index++
         }
