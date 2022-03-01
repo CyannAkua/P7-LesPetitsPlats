@@ -275,12 +275,12 @@ function goodListing(querySelector1, Opt) {
     }
   }
   if (document.querySelector("#ingInputField") != null) {
-    ingInputSearch()
+    inputSearch(document.querySelectorAll("#ingredientList li"),document.querySelector("#ingInputField").value.toLowerCase())
   }
   if (document.querySelector("#applInputField") != null) {
-    applInputSearch()
+    inputSearch(document.querySelectorAll("#applianceList li"),document.querySelector("#applInputField").value.toLowerCase())
   }
   if (document.querySelector("#ustInputField") != null) {
-    ustInputSearch()
+    inputSearch(document.querySelectorAll("#ustensilList li"),document.querySelector("#ustInputField").value.toLowerCase())
   }
 }

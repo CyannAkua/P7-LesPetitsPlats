@@ -3,9 +3,9 @@ var allAppliancesList = "";
 var allUstensilsList = "";
 
 function allELListener() {
-  ELListShown("#ingredientList", "#ingredientList .DropDownIcon",ingInputSearchField)
-  ELListShown("#applianceList", "#applianceList .DropDownIcon",applInputSearchField)
-  ELListShown("#ustensilList", "#ustensilList .DropDownIcon",ustInputSearchField)
+  ELListShown("#ingredientList", "#ingredientList .DropDownIcon",0)
+  ELListShown("#applianceList", "#applianceList .DropDownIcon",1)
+  ELListShown("#ustensilList", "#ustensilList .DropDownIcon",2)
 }
 
 function ELListShown(parameter1, parameter2,functionCall) {
@@ -18,7 +18,15 @@ function ELListShown(parameter1, parameter2,functionCall) {
           .querySelector(parameter1)
           .setAttribute("class", "active")   
       } 
-    functionCall()
+    if(functionCall == 0){
+      inputSearchField(ingInput,"Ingredients","ingInputField","Rechercher un ingredient")
+    }
+    if(functionCall == 1){
+      inputSearchField(applInput,"Appareils","applInputField","Rechercher un appareil")
+    }
+    if(functionCall == 2){
+      inputSearchField(ustInput,"Ustensiles","ustInputField","Rechercher un ustensile")
+    }
   })
 }
 
