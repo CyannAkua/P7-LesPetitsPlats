@@ -7,7 +7,6 @@ function ingInputSearchField() {
     if (ingInput.innerText == "Ingredients") {
         ingInput.innerHTML =
             '<input type=text id=ingInputField placeholder="Search an Ingredient" onkeyup="ingInputSearchEL()">' +
-            '<img src="asset/icons/Search.svg" class="searchIcon">' +
             '<img src="asset/icons/DropDown.svg" class="DropDownIcon">';
     } else {
         ingInput.innerHTML =
@@ -21,7 +20,6 @@ function applInputSearchField() {
     if (applInput.innerText == "Appareils") {
         applInput.innerHTML =
             '<input type=text id=applInputField placeholder="Search an Appliance" onkeyup="applInputSearchEL()">' +
-            '<img src="asset/icons/Search.svg" class="searchIcon">' +
             '<img src="asset/icons/DropDown.svg" class="DropDownIcon">';
     } else {
         applInput.innerHTML =
@@ -36,7 +34,6 @@ function ustInputSearchField() {
     if (ustInput.innerText == "Ustensiles") {
         ustInput.innerHTML =
             '<input type=text id=ustInputField placeholder="Search an Unstensil" onkeyup="ustInputSearchEL()">' +
-            '<img src="asset/icons/Search.svg" class="searchIcon">' +
             '<img src="asset/icons/DropDown.svg" class="DropDownIcon">';
     } else {
         ustInput.innerHTML =

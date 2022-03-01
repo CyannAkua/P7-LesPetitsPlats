@@ -94,10 +94,11 @@ font-family:"Lato", "DM Sans", sans-serif
 }
 #searchWrapper{
     margin: 0 100px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+
     }
 #searchBar{
+    grid-area: 1/1/1/1;
     height: 50px;
     padding: 10px;
     border-radius: 5px;
@@ -105,7 +106,15 @@ font-family:"Lato", "DM Sans", sans-serif
     border:none;
     display:inline;
 }
-
+.searchIcon{
+    grid-area: 1/1/1/1;
+    justify-self: end;
+    align-self: center;
+    padding-right: 15px;
+    width:30px;
+    height: 30px;
+    top: 50%;
+}
 #listWrapper{
     display: flex;
     font-family: Lato;
@@ -166,10 +175,6 @@ ul{
 }
 .active .DropDownIcon{
    transform:rotate(180deg);
-}
-.searchIcon{
-    grid-area: 1/1/1/1;
-    justify-self: right;
 }
 #ingInput input{
     grid-area: 1/1/1/1;

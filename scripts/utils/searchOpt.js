@@ -162,7 +162,7 @@ function SearchIngredientOptions(recipeBuild) {
 
 document.querySelector("#applianceList").addEventListener("click", function (event) {
   if (
-     (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
+    (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
       event.target.innerText != "Appareils" && event.target.innerHTML != ustInput.innerHTML)
   ) {
     filtering();
@@ -196,7 +196,7 @@ function SearchApplianceOptions(recipeBuild) {
 document.querySelector("#ustensilList").addEventListener("click", function (event) {
   if (
     (event.target.innerHTML.indexOf("</li>") < 0 && event.target.innerHTML != "" &&
-    event.target.innerText != "Ustensiles" && event.target.innerHTML != ustInput.innerHTML)
+      event.target.innerText != "Ustensiles" && event.target.innerHTML != ustInput.innerHTML)
   ) {
     filtering();
     document.querySelectorAll(".UstOpt").forEach(element => element.addEventListener("click", removeOpt))
@@ -274,13 +274,13 @@ function goodListing(querySelector1, Opt) {
       optionList.splice(index, 1);
     }
   }
-  if(document.querySelector("#ingInputField") != null){
+  if (document.querySelector("#ingInputField") != null) {
     ingInputSearch()
   }
-  if(document.querySelector("#applInputField") != null){
+  if (document.querySelector("#applInputField") != null) {
     applInputSearch()
   }
-  if(document.querySelector("#ustInputField") != null){
+  if (document.querySelector("#ustInputField") != null) {
     ustInputSearch()
   }
 }

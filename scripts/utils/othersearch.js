@@ -3,14 +3,13 @@ var allAppliancesList = "";
 var allUstensilsList = "";
 
 function allELListener() {
-  ELListShown("#ingredientList", "#ingredientList li", "#ingredientList .DropDownIcon",ingInputSearchField)
-  ELListShown("#applianceList", "#applianceList li", "#applianceList .DropDownIcon",applInputSearchField)
-  ELListShown("#ustensilList", "#ustensilList li", "#ustensilList .DropDownIcon",ustInputSearchField)
+  ELListShown("#ingredientList", "#ingredientList .DropDownIcon",ingInputSearchField)
+  ELListShown("#applianceList", "#applianceList .DropDownIcon",applInputSearchField)
+  ELListShown("#ustensilList", "#ustensilList .DropDownIcon",ustInputSearchField)
 }
 
-function ELListShown(parameter1, parameter2, parameter3,functionCall) {
-  document.querySelector(parameter3).addEventListener("click", function () {
-    const listIng = document.querySelectorAll(parameter2);
+function ELListShown(parameter1, parameter2,functionCall) {
+  document.querySelector(parameter2).addEventListener("click", function () {
       if (document.querySelector(parameter1).className != "") {
         document.querySelector(parameter1).setAttribute("class", "");
       }
