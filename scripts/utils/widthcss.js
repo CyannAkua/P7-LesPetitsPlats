@@ -1,6 +1,6 @@
-function widthcss(){
-    let sel= document.querySelector("#ingredientList")
-    let list = document.querySelectorAll("#ingredientList li")
+function widthcss(sel1,list1){
+    let sel= document.querySelector(sel1)
+    let list = document.querySelectorAll(list1)
     if(list.length < 27){
     sel.style.width = "173px"
     }
@@ -17,4 +17,6 @@ function widthcss(){
             sel.style.width = "773px"
         }
 }
-widthcss()
+widthcss("#ingredientList","#ingredientList li")
+widthcss("#applianceList","#applianceList li")
+widthcss("#ustensilList","#ustensilList li")

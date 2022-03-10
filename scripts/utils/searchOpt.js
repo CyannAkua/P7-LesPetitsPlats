@@ -66,7 +66,9 @@ function filtering() {
   }
   itemList();
   globalGoodListing()
-  widthcss()
+  widthcss("#ingredientList","#ingredientList li")
+widthcss("#applianceList","#applianceList li")
+widthcss("#ustensilList","#ustensilList li")
 }
 
 function itemList() {
