@@ -151,16 +151,15 @@ ul {
 #ingInput{
   color:white;
   display: flex;
-  justify-content: space-around;
-  height: 60px;
+  justify-content: space-evenly;
+  height: 69px;
   align-items: center;
-  margin-bottom: -12px;
+  margin-bottom: -20px;
 }
 #ingInput input {
   background: none;
   color: white;
   width: 70%;
-  margin-right: 10%;
   border: none;
 }
 #ingInput input::placeholder {
@@ -197,16 +196,15 @@ ul {
 #applInput{
   color:white;
   display: flex;
-  justify-content: space-around;
-  height: 60px;
+  justify-content: space-evenly;
+  height: 69px;
   align-items: center;
-  margin-bottom: -12px;
+  margin-bottom: -20px;
 }
 #applInput input {
   background: none;
   color: white;
   width: 70%;
-  margin-right: 10%;
   border: none;
 }
 #applInput input::placeholder {
@@ -242,16 +240,15 @@ ul {
 #ustInput{
   color:white;
   display: flex;
-  justify-content: space-around;
-  height: 60px;
+  justify-content: space-evenly;
+  height: 69px;
   align-items: center;
-  margin-bottom: -12px;
+  margin-bottom: -20px;
 }
 #ustInput input {
   background: none;
   color: white;
   width: 70%;
-  margin-right: 10%;
   border: none;
 }
 #ustInput input::placeholder {
@@ -268,19 +265,19 @@ ul {
 }
 .selectListOption div {
   margin: 5px;
-  padding: 10px;
+  padding: 10px 20px;
   display: flex;
   align-items: flex-start;
   width: fit-content;
-  column-gap: 10px;
+  column-gap: 14px;
   color: white;
   border-radius: 5px;
   size: 14px;
 }
 .DropDownIcon {
   justify-self: right;
-  height: 15px;
-  width: 20px;
+  height: 10px;
+  width: 16px;
 }
 .active .DropDownIcon {
   transform: rotate(180deg);
