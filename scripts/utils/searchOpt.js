@@ -66,6 +66,7 @@ function filtering() {
   }
   itemList();
   globalGoodListing()
+  widthcss()
 }
 
 function itemList() {

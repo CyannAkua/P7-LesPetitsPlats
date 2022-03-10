@@ -126,26 +126,41 @@ ul {
   padding-inline-start: 20px;
 }
 #ingContainer {
-  background-color: blue;
+  background-color: #3282F7;
   height: 69px;
-  width: -webkit-fill-available;
+  border-radius: 5px;
+  min-width: 170px;
 }
 #ingredientList {
-  background-color: blue;
+  background-color: #3282F7;
   display: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .active #ingredientList {
   display: flex;
   color: white;
   flex-flow: column wrap;
   max-height: 500px;
+  gap:3px;
+  padding-bottom: 5px;
 }
 .active #ingredientList li {
   display: inline;
 }
+#ingInput{
+  color:white;
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+  align-items: center;
+  margin-bottom: -12px;
+}
 #ingInput input {
   background: none;
   color: white;
+  width: 70%;
+  margin-right: 10%;
   border: none;
 }
 #ingInput input::placeholder {
@@ -157,25 +172,41 @@ ul {
 }
 
 #applContainer {
-  background-color: green;
+  background-color: #68D9A4;
   height: 69px;
+  border-radius: 5px;
+  min-width: 170px;
 }
 #applianceList {
-  background-color: green;
+  background-color: #68D9A4;
   display: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .active #applianceList {
   display: flex;
   color: white;
   flex-flow: column wrap;
   max-height: 500px;
+  gap:3px;
+  padding-bottom: 5px;
 }
 .active #applianceList li {
   display: inline;
 }
+#applInput{
+  color:white;
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+  align-items: center;
+  margin-bottom: -12px;
+}
 #applInput input {
   background: none;
   color: white;
+  width: 70%;
+  margin-right: 10%;
   border: none;
 }
 #applInput input::placeholder {
@@ -186,25 +217,41 @@ ul {
   line-height: 15px;
 }
 #ustContainer {
-  background-color: red;
+  background-color: #ED6454;
   height: 69px;
+  border-radius: 5px;
+  min-width: 170px;
 }
 #ustensilList {
-  background-color: red;
+  background-color: #ED6454;
   display: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .active #ustensilList {
   display: flex;
   color: white;
   flex-flow: column wrap;
   max-height: 500px;
+  gap:3px;
+  padding-bottom: 5px;
 }
 .active #ustensilList li {
   display: inline;
 }
+#ustInput{
+  color:white;
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+  align-items: center;
+  margin-bottom: -12px;
+}
 #ustInput input {
   background: none;
   color: white;
+  width: 70%;
+  margin-right: 10%;
   border: none;
 }
 #ustInput input::placeholder {
@@ -228,6 +275,8 @@ ul {
 }
 .DropDownIcon {
   justify-self: right;
+  height: 15px;
+  width: 20px;
 }
 .active .DropDownIcon {
   transform: rotate(180deg);
