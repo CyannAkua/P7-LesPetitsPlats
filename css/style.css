@@ -27,7 +27,7 @@ body {
   font-family: Lato;
   align-items: baseline;
   gap: 50px;
-  margin: 100px;
+  margin:30px 100px;
   grid-template-columns: 1fr 1fr 1fr;
 }
 .menuArticles article {
@@ -264,7 +264,7 @@ ul {
 .selectListOption {
   display: flex;
   flex-flow: wrap row;
-  margin: 20px 95px 0px;
+  margin: 20px 95px 10px;
 }
 .selectListOption div {
   margin: 5px;
