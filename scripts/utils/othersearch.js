@@ -6,9 +6,9 @@ let allApplianceListTemp = [];
 let allUstensilsListTemp = [];
 
 function allELListener() {
-  ELListShown("#ingredientList", "#ingredientList .DropDownIcon",0);
-  ELListShown("#applianceList", "#applianceList .DropDownIcon",1);
-  ELListShown("#ustensilList", "#ustensilList .DropDownIcon",2);
+  ELListShown("#ingContainer", "#ingInput .DropDownIcon",0);
+  ELListShown("#applContainer", "#applInput .DropDownIcon",1);
+  ELListShown("#ustContainer", "#ustInput .DropDownIcon",2);
 }
 
 function ELListShown(parameter1, parameter2,functionCall) {
@@ -35,15 +35,17 @@ function ELListShown(parameter1, parameter2,functionCall) {
 
 function allIngList(recipeBuild) {
   allIngredientsListTemp = [];
-  recipeBuild.forEach(recipe => recipe.ingredients.forEach(element => allIngredientsListTemp.push(element.ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))))
+  recipeBuild.forEach(recipe => recipe.ingredients.forEach(element => allIngredientsListTemp.push(element.ingredient)))
   allIngredientsListTemp.join();
   allIngredientsListTemp.sort();
-  for (i = 0; i < allIngredientsListTemp.length; i++) {
-    if (
-      allIngredientsListTemp[i] == allIngredientsListTemp[i - 1] ||
-      allIngredientsListTemp[i] == allIngredientsListTemp[i + 1]
-    ) {
+  let test = []
+  allIngredientsListTemp.forEach(list => test.push(list.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")))
+    for (i = 0; i < test.length; i++) {
+    if (test[i] == test[i+1]||
+      test[i] == test[i-1]
+      ) {
       allIngredientsListTemp.splice(i, 1);
+      test.splice(i,1);
       i--;
     }
   }
@@ -61,15 +63,17 @@ function innerIngredientsFunction() {
 
 function allApplList(recipeBuild) {
   allApplianceListTemp = [];
-  recipeBuild.forEach(recipe => allApplianceListTemp.push(recipe.appliance.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
+  recipeBuild.forEach(recipe => allApplianceListTemp.push(recipe.appliance));
   allApplianceListTemp.join();
   allApplianceListTemp.sort();
-  for (i = 0; i < allApplianceListTemp.length; i++) {
-    if (
-      allApplianceListTemp[i] == allApplianceListTemp[i - 1] ||
-      allApplianceListTemp[i] == allApplianceListTemp[i + 1]
-    ) {
-      allApplianceListTemp.splice(i, 1);
+  let test = []
+  allApplianceListTemp.forEach(list => test.push(list.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")))
+    for (i = 0; i < test.length; i++) {
+    if (test[i] == test[i+1]||
+      test[i] == test[i-1]
+      ) {
+        allApplianceListTemp.splice(i, 1);
+      test.splice(i,1);
       i--;
     }
   }
@@ -87,15 +91,17 @@ function innerApplianceFunction() {
 
 function allUstList(recipeBuild) {
   allUstensilsListTemp = [];
-  recipeBuild.forEach(recipe => recipe.ustensils.forEach(element => allUstensilsListTemp.push(element.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))));
+  recipeBuild.forEach(recipe => recipe.ustensils.forEach(element => allUstensilsListTemp.push(element)));
   allUstensilsListTemp.join();
   allUstensilsListTemp.sort();
-  for (i = 0; i < allUstensilsListTemp.length; i++) {
-    if (
-      allUstensilsListTemp[i] == allUstensilsListTemp[i - 1] ||
-      allUstensilsListTemp[i] == allUstensilsListTemp[i + 1]
-    ) {
-      allUstensilsListTemp.splice(i, 1);
+  let test = []
+  allUstensilsListTemp.forEach(list => test.push(list.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")))
+    for (i = 0; i < test.length; i++) {
+    if (test[i] == test[i+1]||
+      test[i] == test[i-1]
+      ) {
+        allUstensilsListTemp.splice(i, 1);
+      test.splice(i,1);
       i--;
     }
   }

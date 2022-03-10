@@ -2,6 +2,7 @@
 
 body {
   font-family: "Lato", "DM Sans", sans-serif;
+  margin: 0;
 }
 
 .banner {
@@ -117,205 +118,99 @@ body {
 }
 #listWrapper {
   display: flex;
-  font-family: Lato;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  position: absolute;
-  line-height: 22px;
-  letter-spacing: 0em;
-  margin-left: 100px;
-  width: 100%;
-  column-gap: 20px;
+  padding-left: 100px;
+  column-gap: 40px;
+  position: relative;
 }
 ul {
   padding-inline-start: 20px;
 }
-#ingredientList {
-  background: #3282f7;
+#ingContainer {
+  background-color: blue;
   height: 69px;
-  display: block;
-  width: 170px;
-  position: relative;
-  border-radius: 5px;
-  color: white;
-  overflow: hidden;
-  flex-wrap: wrap;
-  gap: 5px;
-  flex-direction: column;
+  width: -webkit-fill-available;
 }
-#ingredientList.active {
+#ingredientList {
+  background-color: blue;
+  display: none;
+}
+.active #ingredientList {
   display: flex;
-  height: fit-content;
-  max-height: 800px;
-  width: max-content;
-  min-width: 170px;
-  max-width: 1000px;
-  padding-bottom: 5px;
+  color: white;
+  flex-flow: column wrap;
+  max-height: 500px;
 }
-#ingredientList.active li {
-  display: block;
-}
-#ingInput {
-  display: grid;
-  grid-template-columns: auto auto;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  min-height: 69px;
-  min-width: 170px;
-  max-width: 200px;
-  gap: 10px;
-  padding: 0px;
-  margin: 0px;
-}
-.DropDownIcon {
-  padding: 10px;
-  justify-self: right;
-}
-.active .DropDownIcon {
-  transform: rotate(180deg);
+.active #ingredientList li {
+  display: inline;
 }
 #ingInput input {
-  grid-area: 1/1/1/1;
   background: none;
-  height: 100%;
-  max-height: 50%;
   color: white;
-  max-width: 170px;
-  width: 100%;
-  border: 2px black;
+  border: none;
 }
 #ingInput input::placeholder {
   color: white;
 }
 #ingredientList li {
-  display: none;
-  width: fit-content;
-  margin-top: 3px;
   max-width: 150px;
   line-height: 15px;
 }
 
-#applianceList {
-  background: #68d9a4;
+#applContainer {
+  background-color: green;
   height: 69px;
-  display: block;
-  width: 170px;
-  position: relative;
-  border-radius: 5px;
-  color: white;
-  overflow: hidden;
-  flex-wrap: wrap;
-  gap: 5px;
-  flex-direction: column;
 }
-#applianceList.active {
-  display: flex;
-  height: fit-content;
-  max-height: 800px;
-  width: auto;
-  min-width: 170px;
-  max-width: 1000px;
-  padding-bottom: 5px;
-}
-#applianceList li {
+#applianceList {
+  background-color: green;
   display: none;
-  width: fit-content;
-  margin-top: 3px;
-  max-width: 150px;
-  line-height: 15px;
 }
-#applianceList.active li {
-  display: block;
+.active #applianceList {
+  display: flex;
+  color: white;
+  flex-flow: column wrap;
+  max-height: 500px;
 }
-#applInput {
-  display: grid;
-  grid-template-columns: auto auto;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  min-height: 69px;
-  min-width: 170px;
-  max-width: 200px;
-  gap: 10px;
-  padding: 0px;
-  margin: 0px;
+.active #applianceList li {
+  display: inline;
 }
 #applInput input {
-  grid-area: 1/1/1/1;
   background: none;
-  height: 100%;
-  max-height: 50%;
   color: white;
-  max-width: 170px;
-  width: 100%;
-  border: 2px black;
+  border: none;
 }
 #applInput input::placeholder {
   color: white;
 }
-#ustensilList {
-  background: #ed6454;
-  height: 69px;
-  display: block;
-  width: 170px;
-  position: relative;
-  border-radius: 5px;
-  color: white;
-  overflow: hidden;
-  flex-wrap: wrap;
-  gap: 5px;
-  flex-direction: column;
-}
-#ustensilList.active {
-  display: flex;
-  height: fit-content;
-  max-height: 800px;
-  width: auto;
-  min-width: 170px;
-  max-width: 1000px;
-  padding-bottom: 5px;
-}
-#ustensilList li {
-  display: none;
-  margin-top: 3px;
+#applianceList li {
   max-width: 150px;
   line-height: 15px;
 }
-#ustensilList.active li {
-  display: block;
+#ustContainer {
+  background-color: red;
+  height: 69px;
 }
-#ustInput {
-  display: grid;
-  grid-template-columns: auto auto;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  min-height: 69px;
-  min-width: 170px;
-  max-width: 200px;
-  gap: 10px;
-  padding: 0px;
-  margin: 0px;
+#ustensilList {
+  background-color: red;
+  display: none;
+}
+.active #ustensilList {
+  display: flex;
+  color: white;
+  flex-flow: column wrap;
+  max-height: 500px;
+}
+.active #ustensilList li {
+  display: inline;
 }
 #ustInput input {
-  grid-area: 1/1/1/1;
   background: none;
-  height: 100%;
-  max-height: 50%;
   color: white;
-  max-width: 170px;
-  width: 100%;
-  border: 2px black;
+  border: none;
 }
 #ustInput input::placeholder {
   color: white;
 }
 #ustensilList li {
-  display: none;
-  width: fit-content;
-  margin-top: 3px;
   max-width: 150px;
   line-height: 15px;
 }
@@ -330,6 +225,12 @@ ul {
   width: fit-content;
   color: white;
   border-radius: 5px;
+}
+.DropDownIcon {
+  justify-self: right;
+}
+.active .DropDownIcon {
+  transform: rotate(180deg);
 }
 .selectListOption .IngOpt {
   background: #3282f7;

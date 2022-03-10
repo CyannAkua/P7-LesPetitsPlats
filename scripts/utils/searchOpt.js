@@ -110,7 +110,7 @@ function SearchIngredientOptions(recipeBuild) {
   recipeBuild.forEach(recipe =>
     recipe.ingredients.forEach(function (ingred) {
       ingOpt.forEach(function (ing) {
-        if (ingred.ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == ing.innerText) {
+        if (ingred.ingredient == ing.innerText) {
           recipeIngredientsList.push(recipe);
         }
       })
@@ -121,7 +121,7 @@ function SearchIngredientOptions(recipeBuild) {
       let isIn = 0;
       recipeIngredientsList[i].ingredients.forEach(function (ingred) {
         ingOpt.forEach(function (ing) {
-          if (ingred.ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == ing.innerText) {
+          if (ingred.ingredient == ing.innerText) {
             isIn++;
           }
         })
@@ -150,7 +150,7 @@ document.querySelector("#applianceList").addEventListener("click", function (eve
 });
 function SearchApplianceOptions(recipeBuild) {
   recipeBuild.forEach(recipe => applOpt.forEach(function (appl) {
-    if (recipe.appliance.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == appl.innerText) {
+    if (recipe.appliance == appl.innerText) {
       recipeApplianceList.push(recipe)
     }
   }))
@@ -163,7 +163,6 @@ function SearchApplianceOptions(recipeBuild) {
 }
 
 document.querySelector("#ustensilList").addEventListener("click", function (event) {
-  console.log(event)
   if (event.target.tagName == "LI"){
     filtering();
     document.querySelectorAll(".UstOpt").forEach(element => element.addEventListener("click", removeOpt))
@@ -172,7 +171,7 @@ document.querySelector("#ustensilList").addEventListener("click", function (even
 function SearchUstensilsOptions(recipeBuild) {
   recipeBuild.forEach(recipe => recipe.ustensils.forEach(function (ustensil) {
     ustOpt.forEach(function (ust) {
-      if (ustensil.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == ust.innerText) {
+      if (ustensil == ust.innerText) {
         recipeUstensilsList.push(recipe);
       }
     })
@@ -183,7 +182,7 @@ function SearchUstensilsOptions(recipeBuild) {
       let ustIn = 0
       recipeUstensilsList[i].ustensils.forEach(function (ustensil) {
         ustOpt.forEach(function (ust) {
-          if (ustensil.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == ust.innerText) {
+          if (ustensil == ust.innerText) {
             ustIn++
           }
         })

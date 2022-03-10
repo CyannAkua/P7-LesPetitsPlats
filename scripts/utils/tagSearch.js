@@ -18,9 +18,9 @@ function inputSearch(selection,inpfield){
     const input = inpfield
     if (input != "") {
         let optionList = [];
-        sel.forEach(element => optionList.push(element.innerText))
+        sel.forEach(element => optionList.push(element.innerText.toLowerCase()))
         for (i = optionList.length - 1 ; i >= 0; i--) {
-            if (optionList[i].search("\\b" + input) == -1) {
+            if (optionList[i].search("\\b" + input, "i") == -1) {
                 sel.item(i).remove();
                 optionList.splice(i, 1);
             }
