@@ -121,7 +121,7 @@ document.querySelector("#ingredientList").addEventListener("click", function (ev
   ingInput = document.querySelector("#ingInput");
   if (event.target.tagName == "LI") {
     const selectOptMark = document.createElement("div");
-    selectOptMark.textContent = event.target.innerText;
+    selectOptMark.innerHTML = event.target.innerText + `<img src=asset/icons/Close.svg class=remove alt="remove tag">`
     document.querySelector(".selectListOption").appendChild(selectOptMark);
     selectOptMark.setAttribute("class", "IngOpt");
     innerIngredientsFunction();
@@ -130,7 +130,7 @@ document.querySelector("#ingredientList").addEventListener("click", function (ev
 document.querySelector("#applianceList").addEventListener("click", function (event) {
   if (event.target.tagName == "LI") {
     const selectOptMark = document.createElement("div");
-    selectOptMark.textContent = event.target.innerText;
+    selectOptMark.innerHTML = event.target.innerText + `<img src=asset/icons/Close.svg class=remove alt="remove tag">`
     document.querySelector(".selectListOption").appendChild(selectOptMark);
     selectOptMark.setAttribute("class", "ApplOpt");
     innerApplianceFunction();
@@ -139,7 +139,7 @@ document.querySelector("#applianceList").addEventListener("click", function (eve
 document.querySelector("#ustensilList").addEventListener("click", function (event) {
   if (event.target.tagName == "LI") {
     const selectOptMark = document.createElement("div");
-    selectOptMark.textContent = event.target.innerText;
+    selectOptMark.innerHTML = event.target.innerText + `<img src=asset/icons/Close.svg class=remove alt="remove tag">`
     document.querySelector(".selectListOption").appendChild(selectOptMark);
     selectOptMark.setAttribute("class", "UstOpt");
     innerUstensilsFunction();

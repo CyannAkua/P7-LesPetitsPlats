@@ -208,7 +208,9 @@ function SearchUstensilsOptions(recipeBuild) {
 }
 
 function removeOpt(event) {
-  event.target.outerHTML = "";
+  if(event.target.tagName == "IMG"){
+  event.target.parentNode.remove()
+  }
   filtering();
 }
 
