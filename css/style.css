@@ -272,7 +272,7 @@ ul {
   column-gap: 14px;
   color: white;
   border-radius: 5px;
-  size: 14px;
+  font-size: 14px;
 }
 .DropDownIcon {
   justify-self: right;
