@@ -1,6 +1,6 @@
 let tempText = "";
 function factoryMenu(recipe) {
-  const { name, ingredients, time, description } = recipe;
+  let { name, ingredients, time, description } = recipe;
   function getMenuFactoryDOM() {
     const article = document.createElement("article");
     article.setAttribute("class", "menuHold");
@@ -11,7 +11,7 @@ function factoryMenu(recipe) {
     const titleh2 = document.createElement("h2");
     titleh2.textContent = name;
     const timeh3 = document.createElement("h3");
-    timeh3.textContent = time + " mn";
+    timeh3.innerHTML = `<img src="asset/icons/Time.svg" class="time" alt="Time">${time} mn`;
     const ingredientsdiv = document.createElement("div");
     const ingredienth3 = document.createElement("h3");
     for (let i = 0; i < ingredients.length; i++) {
@@ -28,6 +28,9 @@ function factoryMenu(recipe) {
     tempText = "";
     ingredientsdiv.appendChild(ingredienth3);
     const descriptionh4 = document.createElement("h4");
+    if(description.length > 400){
+      description = description.substr(0,400) + "...";
+    }
     descriptionh4.textContent = description;
     article.appendChild(img);
     div.appendChild(titleh2);

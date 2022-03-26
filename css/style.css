@@ -291,3 +291,8 @@ ul {
 .selectListOption .UstOpt {
   background: #ed6454;
 }
+.time{
+  width: 16px;
+  height: 16px !important;
+  margin-right: 7px;
+}
